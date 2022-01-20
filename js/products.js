@@ -16,7 +16,7 @@ const app = {
         }
     },
     methods : {
-        getProducts() {
+        getProducts () {
             axios.get(`${url}/api/${path}/admin/products`)
             .then((res) => {
             console.log(res.data);
@@ -24,6 +24,18 @@ const app = {
             })
             .catch((err) => {
             console.dir(err);
+            })
+        },
+        removeProduct (item) {
+            axios.delete(`${url}/api/${path}/admin/product/${item.id}`)
+            .then((res) => {
+            alert(res.data.message);
+            this.getProducts();
+            
+            })
+            .catch((err) => {
+            console.dir(err);
+            alert(err.data.message)
             })
         }
     },

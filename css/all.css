@@ -10,6 +10,11 @@ img {
 .images {
   height: 150px;
 }
+
 .deleteIcon {
   vertical-align: middle;
+  color: black;
+}
+.deleteIcon:hover {
+  color: brown;
 }
