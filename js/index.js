@@ -1,14 +1,7 @@
 
 const url = 'https://vue3-course-api.hexschool.io/v2'; // 加入站點
 const path = 'judyhexschoolforvue'; // 加入個人 API Path
-const  token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    console.log(token);
-    // headers 夾帶 token
-    // axios 的 toeken 只要發送一次
-    axios.defaults.headers.common['Authorization'] = token;
 
-
-  
 // 建立 Vue 元件
 const app = {
     data() {
@@ -36,17 +29,6 @@ const app = {
             alert(err.data.message); // 登入錯誤提示
             })
         },
-        checkLogin(params) {
-          axios.post(`${url}/api/user/check`)
-          .then((res) => {
-            console.log(res.data);
-            window.location = 'products.html';
-          })
-          .catch((err) => {
-            console.dir(err);
-            alert(err.data.message);
-          })
-        }
     },
 
 }

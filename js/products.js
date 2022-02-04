@@ -19,12 +19,23 @@ const app = {
         getProducts () {
             axios.get(`${url}/api/${path}/admin/products`)
             .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             this.products = res.data.products;
             })
             .catch((err) => {
             console.dir(err);
             })
+            // all 物件寫法
+            // axios.get(`${url}/api/${path}/admin/products/all`)
+            // .then((res) => {
+            // this.products = res.data.products;
+            // Object.values(this.products).forEach((item) => {
+            //     console.log(item);
+            // })
+            // })
+            // .catch((err) => {
+            // console.dir(err);
+            // })
         },
         removeProduct (item) {
             axios.delete(`${url}/api/${path}/admin/product/${item.id}`)
@@ -37,10 +48,22 @@ const app = {
             console.dir(err);
             alert(err.data.message)
             })
-        }
+        },
+        checkLogin(params) {
+            axios.post(`${url}/api/user/check`)
+            .then(() => {
+              // console.log(res.data);
+              this.getProducts();
+            })
+            .catch((err) => {
+              console.dir(err);
+              alert(err.data.message);
+            })
+          }
     },
    mounted () {
-    this.getProducts();
+    this.checkLogin();
+    
     }
 }
 Vue.createApp(app).mount('#app')
