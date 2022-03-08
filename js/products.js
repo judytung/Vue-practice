@@ -97,6 +97,10 @@ const app = {
                 this.getProducts();  // 需重新發送取得產品請求，本地端才會更新
                 productModal.hide(); 
             })
+        },
+        createImages () {
+            this.tempProducts.imagesUrl = [];
+            this.tempProducts.imagesUrl.push('')
         }
     },
    mounted () {

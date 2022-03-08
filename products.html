@@ -95,6 +95,12 @@
                     <button v-if="!tempProducts.imagesUrl.length || tempProducts.imagesUrl[tempProducts.imagesUrl.length - 1]" type="button" class="btn btn-primary w-100" @click="tempProducts.imagesUrl.push('')">新增</button> <!--點擊新增按鈕會觸發方法使用 push 新增到陣列裡，且為字串形式-->
                     <button type="button" v-else class="btn btn-outline-danger w-100 mt-2" @click="tempProducts.imagesUrl.pop()">刪除</button> <!--pop 為刪除最後一個-->
                   </div>
+                  <div v-else>
+                    <button class="btn btn-outline-primary btn-sm d-block w-100"
+                      @click="createImages">
+                      新增圖片
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="col-sm-8">
