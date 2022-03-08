@@ -16,7 +16,7 @@ const app = {
             tempProducts:{
                 imagesUrl:[]   // 新增多圖使用，使用陣列
             },
-            new: false
+            isNew: false
         }
     },
     methods : {
@@ -65,16 +65,16 @@ const app = {
             })
         },
         openModal(status, productItem) {
-            if (status === 'new' ) {
+            if (status === 'isNew' ) {
                 this.tempProducts = {
                     imagesUrl:[]   // 若為新增產品，將欄位清空
                 }
                 productModal.show(); 
-                this.new = true;
+                this.isNew = true;
             } else if (status === 'edit') {
                 this.tempProducts = {...productItem}; // 因物件傳參考的特性，需做拷貝
                 productModal.show(); 
-                this.new = false;
+                this.isNew = false;
             } else if (status === 'remove') {
                 removeProductModal.show();
                 this.tempProducts = {...productItem}; // 因物件傳參考的特性，需做拷貝
@@ -86,7 +86,7 @@ const app = {
             let http = 'post';
             let url = `${apiUrl}/api/${path}/admin/product`;
             // 判斷是不是新的產品，當 this.new 為 false 時會跑這段
-            if (!this.new) {
+            if (!this.isNew) {
                 http = 'put';
                 url = `${apiUrl}/api/${path}/admin/product/${this.tempProducts.id}`;
             }
